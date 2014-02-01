@@ -59,9 +59,8 @@ All other symbols are terminals.
 
 ###top level syntax
 <TABLE ALIGN="center" CELLPADDING="4">
-<TR>
-  <TD></TD>
-  <TD><B>|</B></TD>
+<TR><TD><I>Top</I></TD>
+  <TD><B>-&gt;</B></TD>
   <TD>
     <CODE>(</CODE><CODE>namespace</CODE><CODE>(</CODE>
       <B>[</B> <I>Identifier</I> <B>]</B>
