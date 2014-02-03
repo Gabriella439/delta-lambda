@@ -19,7 +19,13 @@ All other symbols are terminals.
 <TR>
   <TD></TD>
   <TD><B>|</B></TD>
-  <TD><CODE>Identifier</code></TD>
+  <TD>Identifier</TD>
+</TR>
+<TR>
+    <TD></TD>
+    <TD><B>|</B></TD>
+    <TD><CODE>(</CODE><CODE>qualified</CODE>
+      <B>[</B> Identifier <B>]</B> <CODE>)</CODE></TD>
 </TR>
 <TR>
   <TD></TD>
@@ -38,19 +44,12 @@ All other symbols are terminals.
   </TD>
 </TR>
 <TR>
-    <TD></TD>
-    <TD><B>|</B></TD>
-    <TD><CODE>(</CODE><CODE>qualified</CODE>
-      <CODE>(</CODE> <B>[</B> <I>Identifier</I> <B>]</B> <CODE>)</CODE>
-            <CODE>)</CODE></TD>
-</TR>
-<TR>
   <TD></TD>
   <TD><B>|</B></TD>
   <TD>
     <CODE>(</CODE> <CODE>lambda</CODE>
     <CODE>(</CODE> <B>[</B> 
-      <CODE>(</CODE><I>Identifier</I> <I>Expression</I><CODE>)</CODE>
+      <CODE>(</CODE>Identifier <I>Expression</I><CODE>)</CODE>
          <B>]</B>
     <CODE>)</CODE> <I>Expression</I> <CODE>)</CODE>
   </TD>
@@ -63,7 +62,7 @@ All other symbols are terminals.
   <TD><B>-&gt;</B></TD>
   <TD>
     <CODE>(</CODE><CODE>namespace</CODE><CODE>(</CODE>
-      <B>[</B> <I>Identifier</I> <B>]</B>
+      <B>[</B> Identifier <B>]</B>
     <CODE>)</CODE> <I>Expression</I> <CODE>)</CODE>
   </TD>
 </TR>
@@ -71,10 +70,8 @@ All other symbols are terminals.
   <TD></TD>
   <TD><B>|</B></TD>
   <TD>
-    <CODE>(</CODE> <CODE>declare</CODE>
-    <I>Identifier</I>
-    <CODE>(</CODE> <B>[</B> 
-      <CODE>(</CODE><I>Identifier</I> <I>Expression</I><CODE>)</CODE>
+    <CODE>(</CODE> <CODE>declare</CODE> Identifier <CODE>(</CODE> <B>[</B> 
+      <CODE>(</CODE>Identifier <I>Expression</I><CODE>)</CODE>
          <B>]</B>
     <CODE>)</CODE> <I>Expression</I> <CODE>)</CODE>
   </TD>
@@ -83,10 +80,8 @@ All other symbols are terminals.
   <TD></TD>
   <TD><B>|</B></TD>
   <TD>
-    <CODE>(</CODE> <CODE>define</CODE>
-    <I>Identifier</I>
-    <CODE>(</CODE> <B>[</B> 
-      <CODE>(</CODE><I>Identifier</I> <I>Expression</I><CODE>)</CODE>
+    <CODE>(</CODE> <CODE>define</CODE> Identifier <CODE>(</CODE> <B>[</B> 
+      <CODE>(</CODE>Identifier <I>Expression</I><CODE>)</CODE>
          <B>]</B>
     <CODE>)</CODE> <I>Expression</I>  <I>Expression</I>
     <CODE>)</CODE>
