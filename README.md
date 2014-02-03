@@ -1,7 +1,7 @@
 # ΔΛ (Delta-Lambda)
 
 ## Introduction :
-> This langauge is a test language for an implementation of the type system  ΔΛ (Delta-Lambda) described by [de Bruijn] for simplifying the semantics of his [Automath] project.
+This langauge is a test language for an implementation of the type system  ΔΛ (Delta-Lambda) described by [de Bruijn] for simplifying the semantics of his [Automath] project.
 Eventually I will post the Coq/Idris/Agda/etc... proofs for the compliance of  the code to the inferential rules specified by [De Groote].
 
 ## Syntax :
@@ -90,6 +90,53 @@ All other symbols are terminals.
 </TABLE>
 
 ## Semantics :
+the sematics of delta-lambda are really simple for the most part, and involve simple inductive definitions on the structure of expressions and top-level syntax. We will step through the inductive relations on therms and describe them in detail. We assume that beta equivalence is known to be the reflexive transitive symmetric closure of beta reduction, which is defined as normal. the notation <CODE>[x := A]B</CODE> is used to represent substitution, which also takes on the typical meaning (pedants may examine [de Bruijn]'s paper)
+
+here are the relations (the names of which are the same in the code): 
+ 1. typeOf
+   * the typeOf function produces the type of a term, by replacing the tail variable with it's type
+
+> typeOf[context, x] = A iff (x A) in context
+
+> typeOf[context, (A B)] = (typeOf[context, A] B)
+
+> typeOf[context, (lambda ((x A)) B)] = (lambda ((x A)) typeOf[(x A):context, B])
+
+ 2. typeN
+   * this is an interated version of the typeOf function, and is used to essentially η-expand (eta-expand) the given         term N times.
+
+> typeN[context, 0, A] = A
+
+> typeN[context n + 1, A] = typeN[context, n, typeOf[context, A]]
+
+ 4. degree
+   * this function computes a natural number value representing the amount of interdependence of a term on it's binders.
+
+> degree[context, type] = 0
+
+> degree[context, x>= 1 + degree[context, A] iff (x A) in context
+
+> degree[context, (A B)] = degree[A]
+
+> degree[context, (lambda ((x A)) B)] = degree[(x A):context, B]
+
+ 3. typing
+   * this function produces the 'final' type of a term, that is the term end in <CODE>type</CODE>.
+
+> typing[context, A] = typeN[context, degree[context, A], A]
+
+ 5. correct
+   * this is the most important structural function, it's purpose is to prove (or disprove) that a given term is (or is not) correct.
+
+> correct[context, type] = true
+
+> correct[context, x] = true iff (x A) in context, else false
+
+> correct[context, (lambda ((x A)) B)] = correct[context, A] and correct[(x A):context, B]
+
+> correct[context, (A B)] = correct[B] and typing[context, A] is beta equivalent to some (lambda ((x C)) D) and degree[context, B] > 1 and typeOf[context, B] is beta equivalent to C and correct[context, [x := B]D]
+
+It must be reiterated that proofs of the conformance of these structural relations on Expressions have not been written yet, as the relations are not simply recursive, so a proof in Coq/Agda/Idris/etc... will be very difficult
 
 ## References :
  * [Generalising Automath by Means of a Lambda-Typed Lambda Calculus][de Bruijn] Keuker, D.W., Lopez-Escobar, E.G.K. and Smith, C.H., eds., *Mathematal Logic and Theoretical Computer Science*, pp. 71-92, by courtesy of Marcel Dekker Inc., New York.
