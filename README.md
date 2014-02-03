@@ -104,6 +104,6 @@ All other symbols are terminals.
  * [Defining λ-Typed λ-Calculi by Axiomatizing the Typing Relation][de Groote] P. Enjalbert, A. Finkel, and K.W. Wagner eds., *Lecture Notes in Computer Science, Vol. 665*, Springer-Verlag (1993), pp. 712-723., 10th Annual Symposium on Theoretical Aspects of Computer Science, STACS’93.
 
 [Automath]: http://www.win.tue.nl/automath/
-[de Bruijn]: ../Documents/de_Bruijn.pdf
-[de Groote]: ../Documents/de_Groote.pdf
-[Kamareddine]: ../Documents/Kamareddine.pdf
+[de Bruijn]: Documents/de_Bruijn.pdf
+[de Groote]: Documents/de_Groote.pdf
+[Kamareddine]: Documents/Kamareddine.pdf
