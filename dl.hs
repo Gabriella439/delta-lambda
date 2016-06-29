@@ -357,7 +357,7 @@ vector :: Parser [Term SourcePos Text Word64]
 vector = sepBy1 term commaToken
 
 telescope :: Parser [([(Text, SourcePos)], Term SourcePos Text Word64)]
-telescope = some ((,) <$> sepBy ((,) <$> variableToken <*> getPosition) commaToken <*> (colonToken >> term))
+telescope = sepBy1 ((,) <$> sepBy ((,) <$> variableToken <*> getPosition) spaceToken <*> (colonToken >> term)) commaToken
 
 term :: Parser (Term SourcePos Text Word64)
 term =   (Type <$> (typeToken >> getPosition) <?> "type")
