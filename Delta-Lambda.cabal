@@ -129,7 +129,7 @@ executable Delta-Lambda
                        cpphs >=1.20,
                        filepath >= 1.4.0.0,
                        haskeline >=0.7 && <0.8,
-                       megaparsec >=5.0 && <5.1,
+                       megaparsec >=5.0 && <5.3,
                        mtl>=2.2 && <2.3,
                        options >=1.2 && <1.3,
                        parallel>=3.2 && <3.3,
